@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儀表板 - 嵐雲地方檢察署案件查詢平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title text-serif" style="font-size: 1.1rem; line-height: 1.4;">嵐雲地方檢察署<br>案件查詢平台</div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">主控台概覽</a>
+                <a href="cases.html" class="nav-item">案件列表管理</a>
+                <a href="calendar.html" class="nav-item">庭期與行程管理</a>
+                <a href="directory.html" class="nav-item">機關通訊錄</a>
+                <a href="tracking.html" class="nav-item">案件狀態追蹤</a>
+                <a href="upload.html" class="nav-item">判決書上傳</a>
+                <a href="statistics.html" class="nav-item">統計報表</a>
+                <a href="settings.html" class="nav-item">系統設定</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="user-info">
+                    <span id="userNameDisplay">管理員</span> | 
+                    <a href="#" id="logoutBtn" style="color: var(--danger); margin-left: 0.5rem;">登出</a>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-wrapper">
+                <h2 class="page-title text-serif">主控台概覽</h2>
+                
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">總案件數</div>
+                        <div class="stat-value" id="statTotal">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">偵查中案件</div>
+                        <div class="stat-value" id="statInvestigating">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">待結案 / 公告</div>
+                        <div class="stat-value" id="statPending" style="color: var(--warning)">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">已結案 (總數)</div>
+                        <div class="stat-value" id="statClosed" style="color: var(--success)">0</div>
+                    </div>
+                </div>
+
+                <!-- Recent Cases Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">近期案件列表</h3>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">+ 新增案件</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>案號</th>
+                                    <th>案由</th>
+                                    <th>承辦檢察官</th>
+                                    <th>目前狀態</th>
+                                    <th>更新時間</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="casesTableBody">
+                                <!-- Data will be populated by app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

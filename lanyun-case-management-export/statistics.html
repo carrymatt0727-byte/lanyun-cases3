@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>統計報表 - 嵐雲地方檢察署</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .chart-bar {
+            height: 24px;
+            background-color: var(--primary-light);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title text-serif" style="font-size: 1.1rem; line-height: 1.4;">嵐雲地方檢察署<br>案件查詢平台</div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">主控台概覽</a>
+                <a href="cases.html" class="nav-item">案件列表管理</a>
+                <a href="calendar.html" class="nav-item">庭期與行程管理</a>
+                <a href="directory.html" class="nav-item">機關通訊錄</a>
+                <a href="tracking.html" class="nav-item">案件狀態追蹤</a>
+                <a href="upload.html" class="nav-item">判決書上傳</a>
+                <a href="statistics.html" class="nav-item active">統計報表</a>
+                <a href="settings.html" class="nav-item">系統設定</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="user-info">
+                    <span id="userNameDisplay">管理員</span> | 
+                    <a href="#" id="logoutBtn" style="color: var(--danger); margin-left: 0.5rem;">登出</a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <h2 class="page-title text-serif">年度統計報表</h2>
+                
+                <div class="stats-grid">
+                    <div class="card" style="padding: 1.5rem;">
+                        <h3 class="card-title mb-3">案件類別佔比</h3>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <span>詐欺案件</span><span>0%</span>
+                            </div>
+                            <div class="chart-bar" style="width: 0%; background-color: var(--primary-color);">0%</div>
+                            
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <span>毒品案件</span><span>0%</span>
+                            </div>
+                            <div class="chart-bar" style="width: 0%;">0%</div>
+                            
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <span>公共危險</span><span>0%</span>
+                            </div>
+                            <div class="chart-bar" style="width: 0%; background-color: var(--secondary-color);">0%</div>
+                            
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <span>其他</span><span>0%</span>
+                            </div>
+                            <div class="chart-bar" style="width: 0%; background-color: #cbd5e1;">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding: 1.5rem;">
+                        <h3 class="card-title mb-3">檢察官結案效率 (本月)</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>股別/姓名</th>
+                                    <th>新收</th>
+                                    <th>已結</th>
+                                    <th>未結</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 統計資料將自動由系統計算，目前尚無資料 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

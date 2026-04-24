@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案件列表管理 - 嵐雲地方檢察署</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title text-serif" style="font-size: 1.1rem; line-height: 1.4;">嵐雲地方檢察署<br>案件查詢平台</div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">主控台概覽</a>
+                <a href="cases.html" class="nav-item active">案件列表管理</a>
+                <a href="calendar.html" class="nav-item">庭期與行程管理</a>
+                <a href="directory.html" class="nav-item">機關通訊錄</a>
+                <a href="tracking.html" class="nav-item">案件狀態追蹤</a>
+                <a href="upload.html" class="nav-item">判決書上傳</a>
+                <a href="statistics.html" class="nav-item">統計報表</a>
+                <a href="settings.html" class="nav-item">系統設定</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="user-info">
+                    <span id="userNameDisplay">管理員</span> | 
+                    <a href="#" id="logoutBtn" style="color: var(--danger); margin-left: 0.5rem;">登出</a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h2 class="page-title text-serif" style="margin-bottom: 0;">案件列表管理</h2>
+                    <button id="addCaseBtn" class="btn btn-primary">+ 新增案件</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <input type="text" id="caseSearchInput" class="form-control" placeholder="搜尋案號或案由..." style="max-width: 300px;">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>案號</th>
+                                    <th>案由</th>
+                                    <th>承辦檢察官</th>
+                                    <th>目前狀態</th>
+                                    <th>更新時間</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="casesManagementTableBody">
+                                <!-- Data populated by app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Case Modal -->
+    <div id="caseModal" class="modal-overlay">
+        <div class="modal-content">
+            <form id="caseForm">
+                <div class="modal-header">
+                    <h3 id="modalTitle" class="modal-title text-serif">新增 / 編輯案件</h3>
+                    <button type="button" class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">案號</label>
+                        <input type="text" id="modalCaseId" class="form-control" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label class="form-label">案由</label>
+                        <input type="text" id="modalTitleInput" class="form-control" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label class="form-label">承辦檢察官</label>
+                        <input type="text" id="modalProsecutor" class="form-control" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label class="form-label">狀態</label>
+                        <select id="modalStatus" class="form-control" required>
+                            <option value="偵查中">偵查中</option>
+                            <option value="待結案">待結案</option>
+                            <option value="已起訴">已起訴</option>
+                            <option value="已結案">已結案</option>
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label class="form-label">立案日期</label>
+                        <input type="date" id="modalDate" class="form-control" required>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <div class="form-group mt-2" style="flex: 1;">
+                            <label class="form-label">開庭日期 (選填)</label>
+                            <input type="date" id="modalCourtDate" class="form-control">
+                        </div>
+                        <div class="form-group mt-2" style="flex: 1;">
+                            <label class="form-label">開庭時間 (選填)</label>
+                            <input type="time" id="modalCourtTime" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label class="form-label">備註 (檢視用)</label>
+                        <textarea id="modalNotes" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline modal-cancel">取消</button>
+                    <button type="submit" class="btn btn-primary">儲存案件</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

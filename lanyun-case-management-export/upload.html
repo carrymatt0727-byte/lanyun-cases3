@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判決書上傳 - 嵐雲地方檢察署案件查詢平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title text-serif" style="font-size: 1.1rem; line-height: 1.4;">嵐雲地方檢察署<br>案件查詢平台</div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">主控台概覽</a>
+                <a href="cases.html" class="nav-item">案件列表管理</a>
+                <a href="calendar.html" class="nav-item">庭期與行程管理</a>
+                <a href="directory.html" class="nav-item">機關通訊錄</a>
+                <a href="tracking.html" class="nav-item">案件狀態追蹤</a>
+                <a href="upload.html" class="nav-item active">判決書上傳</a>
+                <a href="statistics.html" class="nav-item">統計報表</a>
+                <a href="settings.html" class="nav-item">系統設定</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="user-info">
+                    <span id="userNameDisplay">管理員</span> | 
+                    <a href="#" id="logoutBtn" style="color: var(--danger); margin-left: 0.5rem;">登出</a>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-wrapper">
+                <h2 class="page-title text-serif">判決書上傳作業</h2>
+                
+                <div class="card" style="max-width: 800px; padding: 2rem;">
+                    <form id="uploadForm">
+                        <div class="form-group">
+                            <label for="caseId" class="form-label">案號</label>
+                            <input type="text" id="caseId" class="form-control" placeholder="請輸入案件案號" required>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="judgmentType" class="form-label">文書類別</label>
+                            <select id="judgmentType" class="form-control" required>
+                                <option value="">請選擇類別...</option>
+                                <option value="起訴書">起訴書</option>
+                                <option value="不起訴處分書">不起訴處分書</option>
+                                <option value="緩起訴處分書">緩起訴處分書</option>
+                                <option value="判決書">判決書</option>
+                            </select>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="documentFile" class="form-label">上傳檔案 (PDF格式)</label>
+                            <input type="file" id="documentFile" class="form-control" accept=".pdf" required style="padding: 0.4rem;">
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="notes" class="form-label">備註事項</label>
+                            <textarea id="notes" class="form-control" rows="4" placeholder="請輸入案件相關備註..."></textarea>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary">確認上傳並公告</button>
+                            <button type="reset" class="btn btn-outline" style="margin-left: 1rem;">清除重填</button>
+                        </div>
+                        <div id="uploadSuccess" style="display:none; color: var(--success); margin-top: 1rem; font-weight: 500;">
+                            ✓ 判決書上傳成功！
+                        </div>
+                    </form>
+                </div>
+
+                <h2 class="page-title text-serif" style="margin-top: 3rem;">已上傳文書列表</h2>
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>案號</th>
+                                    <th>文書類別</th>
+                                    <th>檔案名稱</th>
+                                    <th>上傳日期</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="judgmentListBody">
+                                <!-- Populated by app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>庭期與行程管理 - 嵐雲地方檢察署</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background-color: var(--border-color);
+            border: 1px solid var(--border-color);
+        }
+        .calendar-header {
+            background-color: #f8fafc;
+            text-align: center;
+            font-weight: bold;
+            padding: 0.5rem;
+            color: var(--text-light);
+        }
+        .calendar-day {
+            background-color: var(--bg-white);
+            min-height: 100px;
+            padding: 0.5rem;
+        }
+        .calendar-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .event {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            border-left: 3px solid #2b6cb0;
+            padding: 0.2rem 0.4rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .event.danger {
+            background-color: #fff5f5;
+            color: #c53030;
+            border-left-color: #c53030;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title text-serif" style="font-size: 1.1rem; line-height: 1.4;">嵐雲地方檢察署<br>案件查詢平台</div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">主控台概覽</a>
+                <a href="cases.html" class="nav-item">案件列表管理</a>
+                <a href="calendar.html" class="nav-item active">庭期與行程管理</a>
+                <a href="directory.html" class="nav-item">機關通訊錄</a>
+                <a href="tracking.html" class="nav-item">案件狀態追蹤</a>
+                <a href="upload.html" class="nav-item">判決書上傳</a>
+                <a href="statistics.html" class="nav-item">統計報表</a>
+                <a href="settings.html" class="nav-item">系統設定</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="user-info">
+                    <span id="userNameDisplay">管理員</span> | 
+                    <a href="#" id="logoutBtn" style="color: var(--danger); margin-left: 0.5rem;">登出</a>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <h2 class="page-title text-serif">庭期與行程管理</h2>
+                
+                <div class="card" style="padding: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <button id="prevMonthBtn" class="btn btn-outline">&lt; 上個月</button>
+                        <h3 id="currentMonthYear" class="text-serif" style="margin: 0;"></h3>
+                        <button id="nextMonthBtn" class="btn btn-outline">下個月 &gt;</button>
+                    </div>
+                    
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Dynamic calendar will be injected here by app.js -->
+                    </div>
+                </div>
+            </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
